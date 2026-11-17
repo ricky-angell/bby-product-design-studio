@@ -473,8 +473,8 @@ Excluded (ShineOn lists as discontinued): Beach Towel : Discontinued.
 3. **Build & validation** — exact-size render, PNG pHYs / JPEG JFIF DPI, SVG with text→outlines, independent re-inspection, size/transparency/colour checks, fixes, ZIP + report. COMPLETED.
 4. **AI Prompt Assistant, previews, projects (IndexedDB), backups, batch ZIP.** COMPLETED.
 5. **Automated tests** (desktop/tablet/mobile, real Chrome) — see `docs/TEST_REPORT.md`. COMPLETED.
-6. **Deployment to GitHub Pages** — see `docs/DEPLOYMENT_REPORT.md`.
-7. **Skool publication** — see `docs/SKOOL_PUBLICATION_REPORT.md`.
+6. **Deployment to GitHub Pages** — live at https://ricky-angell.github.io/bby-product-design-studio/ and verified in Chrome (see `docs/DEPLOYMENT_REPORT.md`). COMPLETED.
+7. **Skool publication** — BLOCKED / NOT PUBLISHED: no access to the signed-in Skool classroom (see `docs/SKOOL_PUBLICATION_REPORT.md`).
 
 ## Open items
 
