@@ -11,7 +11,8 @@
     "audit:catalog": "node tools/audit-shineon.mjs",
     "test": "node tests/run-tests.mjs",
     "prebuild": "node tools/copy-fonts.mjs",
-    "progress": "node tools/progress.mjs"
+    "progress": "node tools/progress.mjs",
+    "deploy": "sh tools/deploy-pages.sh"
   },
   "dependencies": {
     "@fontsource/abril-fatface": "5.3.0",
