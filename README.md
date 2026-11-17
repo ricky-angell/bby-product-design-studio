@@ -48,6 +48,7 @@ The app uses React + Vite, Fabric.js (canvas editor), opentype.js (SVG text outl
 - [`BBY_PRODUCT_DESIGN_STUDIO_PROGRESS.md`](BBY_PRODUCT_DESIGN_STUDIO_PROGRESS.md): per-category, per-product status
 - [`docs/SPEC_AUDIT.md`](docs/SPEC_AUDIT.md): the full spec inventory and every discrepancy found in ShineOn's docs
 - [`docs/TEST_REPORT.md`](docs/TEST_REPORT.md) and [`docs/ALL_PRODUCTS_EXPORT_CHECK.md`](docs/ALL_PRODUCTS_EXPORT_CHECK.md): test results
+- **Live app:** https://ricky-angell.github.io/bby-product-design-studio/
 - [`docs/DEPLOYMENT_REPORT.md`](docs/DEPLOYMENT_REPORT.md) and [`docs/SKOOL_PUBLICATION_REPORT.md`](docs/SKOOL_PUBLICATION_REPORT.md)
 
 ---
