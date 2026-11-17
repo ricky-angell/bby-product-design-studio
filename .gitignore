@@ -1,0 +1,8 @@
+node_modules/
+dist/
+tests/output/
+*.log
+.DS_Store
+# Never commit student artwork or project backups
+*.bby-backup.zip
+student-projects/
