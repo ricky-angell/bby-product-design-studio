@@ -35,7 +35,7 @@ export function buildReport(product, variant, results, ready, projectName) {
     L.push('', '-'.repeat(44), `${r.surface}: ${r.file || '(not exported)'}`, `  Dimensions: ${r.exportedDimensions || '—'} (required ${r.requiredDimensions})`, `  DPI:        ${r.exportedDpi ?? '—'} (required ${r.requiredDpi ?? 'not stated'})`, `  Format:     ${r.format}`, `  File size:  ${r.fileSize || '—'} (limit ${r.maxFileSizeMB ? `under ${r.maxFileSizeMB} MB` : 'not stated'})`, `  Validation: ${r.validation}`);
     r.checks.forEach((c) => L.push(`   [${c.result === 'PASS' ? ' OK ' : c.result === 'WARN' ? 'WARN' : 'FAIL'}] ${c.check}: ${c.detail}`));
   }
-  L.push('', 'Sources:', ...product.sources.map((s) => `  ${s.title} — ${s.url}`), '', 'Previews in BBY Product Design Studio are illustrative, not official ShineOn mockups.');
+  L.push('', 'Sources:', ...product.sources.map((s) => `  ${s.title} — ${s.url}`), '', 'Product previews in BBY Product Design Studio use official ShineOn mockups only (installed by the seller or published by the BBY administrator); no stand-in product drawings are used.');
   return { text: L.join('\n'), json };
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HEART_100 } from '../lib/editor.js';
+import { subscribeMockups, mockupsVersion, kitsForProduct, thumbUrl } from '../lib/mockups.js';
 
 export function Logo({ size = 40 }) {
   return (
@@ -18,31 +18,37 @@ export function Logo({ size = 40 }) {
   );
 }
 
-const DOGTAG = 'M30 0 H70 Q100 0 100 30 V70 Q100 100 70 100 H30 Q0 100 0 70 V30 Q0 0 30 0 Z';
+/** Subscribes a component to the installed/published mockup-kit index. */
+export function useMockups() {
+  return React.useSyncExternalStore(subscribeMockups, mockupsVersion);
+}
 
-/** Simple proportional silhouette of the artwork area (not a product photo). */
-export function ShapeThumb({ product, size = 120 }) {
-  const s = product.surfaces[0] || { width: 1, height: 1 };
-  const k = 74 / Math.max(s.width, s.height);
-  const w = s.width * k, h = s.height * k, x = (100 - w) / 2, y = (92 - h) / 2;
-  const role = product.artworkRole;
-  const fill = role === 'engraving' ? 'url(#tg-metal)' : role === 'message-card' ? '#f6f7fb' : 'url(#tg-blue)';
-  const shape = role === 'message-card' ? 'card' : product.previewShape;
-  let el;
-  if (shape === 'circle') el = <ellipse cx="50" cy="46" rx={w / 2} ry={h / 2} fill={fill} />;
-  else if (shape === 'heart') el = <path d={HEART_100} transform={`translate(${x} ${y}) scale(${w / 100} ${h / 100})`} fill={fill} />;
-  else if (shape === 'dogtag') el = <path d={DOGTAG} transform={`translate(${x} ${y}) scale(${w / 100} ${h / 100})`} fill={fill} />;
-  else el = <rect x={x} y={y} width={w} height={h} rx={shape === 'card' ? 1 : 3} fill={fill} />;
+/**
+ * Product thumbnail: ShineOn's own product image from an installed official mockup kit, or a
+ * plain placeholder that says an approved image is needed. Never a drawn stand-in shape.
+ */
+export function ProductThumb({ product, size = 140, variant = null }) {
+  useMockups();
+  const kits = kitsForProduct(product.id);
+  const pick = kits.find((k) => variant && k.kit.variant === variant) || [...kits].sort((a, b) => (b.kit.overlayPixels > 0) - (a.kit.overlayPixels > 0))[0];
+  const s = product.surfaces[0] || { width: 0, height: 0 };
+  if (pick?.kit.thumb) {
+    return (
+      <figure className="pthumb" style={{ width: size, height: size }} data-thumb="official" data-kit-id={pick.kit.id}>
+        <img src={thumbUrl(pick)} alt={`${product.name} — official ShineOn product image`} loading="lazy" />
+        {size >= 90 && <figcaption>ShineOn image</figcaption>}
+      </figure>
+    );
+  }
+  if (size < 90) {
+    return <div className="pthumb placeholder" style={{ width: size, height: size }} data-thumb="placeholder" title="No approved ShineOn product image is installed for this product"><span className="ph-sub">No image</span></div>;
+  }
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} role="img" aria-label={`${s.width} by ${s.height} artwork area`}>
-      <defs>
-        <linearGradient id="tg-blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#3bc9ff" /><stop offset="1" stopColor="#1b4fd1" /></linearGradient>
-        <linearGradient id="tg-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f4f6f9" /><stop offset=".5" stopColor="#8e97a6" /><stop offset="1" stopColor="#dfe4ec" /></linearGradient>
-      </defs>
-      {el}
-      {role === 'message-card' && <circle cx="50" cy="46" r={Math.min(w, h) * 0.16} fill="none" stroke="#c0a24a" strokeWidth="2" />}
-      <text x="50" y="96" textAnchor="middle" fontSize="8" fill="#9aa6bd" fontFamily="Poppins, sans-serif">{s.width}×{s.height}</text>
-    </svg>
+    <div className="pthumb placeholder" style={{ width: size, height: size }} data-thumb="placeholder" title="No approved ShineOn product image is installed for this product">
+      <span className="ph-title">Product image not installed</span>
+      <span className="ph-sub">Exact preview needs an approved ShineOn mockup</span>
+      <span className="ph-size">Artwork {s.width}×{s.height} px</span>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ShapeThumb, StatusChip, PartnerChip } from './common.jsx';
+import { ProductThumb, StatusChip, PartnerChip } from './common.jsx';
 import { ROLE_INFO } from '../lib/catalog.js';
 
 export default function Catalog({ db, onSelect }) {
@@ -84,7 +84,7 @@ export default function Catalog({ db, onSelect }) {
             <div className="product-grid">
               {ps.map((p) => (
                 <button key={p.id} className="pcard" onClick={() => onSelect(p.id)} data-product-id={p.id}>
-                  <div className="thumb"><ShapeThumb product={p} size={140} /></div>
+                  <div className="thumb"><ProductThumb product={p} size={140} /></div>
                   <h4>{p.name}</h4>
                   <div className="meta">{p.surfaces.map((s) => `${s.width}×${s.height}`).join(' + ')} px · {p.formats.join('/')} · {typeof p.dpi === 'number' ? `${p.dpi} DPI` : p.dpi === 'any' ? 'any DPI' : 'DPI n/a'}</div>
                   <div className="row" style={{ gap: 4 }}>

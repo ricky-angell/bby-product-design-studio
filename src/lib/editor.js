@@ -413,9 +413,9 @@ export function guideSpecs(product, surface) {
   if (product.artworkRole === 'message-card') g.push({ kind: 'ellipse', cx: 0.5, cy: 0.5, rx: 0.2, ry: 0.2, color: '#ffb547', dash: true, label: 'Jewelry sits around here (approximate)' });
   const shape = product.previewShape;
   if (product.artworkRole === 'graphic' || product.artworkRole === 'engraving') {
-    if (shape === 'circle') g.push({ kind: 'ellipse', cx: 0.5, cy: 0.5, rx: 0.5, ry: 0.5, color: '#7ee0ff', dash: true, label: 'Approximate product shape (illustrative)', lx: 0.06, ly: 0.9 });
-    if (shape === 'heart') g.push({ kind: 'path', d: HEART_100, x: 0, y: 0, w: 1, h: 1, color: '#7ee0ff', dash: true, label: 'Approximate product shape (illustrative)', lx: 0.06, ly: 0.9 });
-    if (shape === 'dogtag') g.push({ kind: 'path', d: 'M30 0 H70 Q100 0 100 30 V70 Q100 100 70 100 H30 Q0 100 0 70 V30 Q0 0 30 0 Z', x: 0, y: 0, w: 1, h: 1, color: '#7ee0ff', dash: true, label: 'Approximate product shape (illustrative)', lx: 0.06, ly: 0.9 });
+    if (shape === 'circle') g.push({ kind: 'ellipse', cx: 0.5, cy: 0.5, rx: 0.5, ry: 0.5, color: '#7ee0ff', dash: true, label: 'Cut-line guide (approximate) — check the ShineOn template', lx: 0.06, ly: 0.9 });
+    if (shape === 'heart') g.push({ kind: 'path', d: HEART_100, x: 0, y: 0, w: 1, h: 1, color: '#7ee0ff', dash: true, label: 'Cut-line guide (approximate) — check the ShineOn template', lx: 0.06, ly: 0.9 });
+    if (shape === 'dogtag') g.push({ kind: 'path', d: 'M30 0 H70 Q100 0 100 30 V70 Q100 100 70 100 H30 Q0 100 0 70 V30 Q0 0 30 0 Z', x: 0, y: 0, w: 1, h: 1, color: '#7ee0ff', dash: true, label: 'Cut-line guide (approximate) — check the ShineOn template', lx: 0.06, ly: 0.9 });
   }
   if (product.artworkRole === 'engraving') g.push({ kind: 'rect', x: 0, y: 0, w: 0, h: 0, color: '#9fe870', label: 'Engraving: solid black artwork only', lx: 0.06, ly: 0.06 + 0.04 });
   return g;

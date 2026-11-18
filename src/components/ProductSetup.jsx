@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SpecTable, SpecIssues, SpecLinks, SpecSources } from './SpecSheet.jsx';
-import { ShapeThumb } from './common.jsx';
+import { ProductThumb } from './common.jsx';
 import { ROLE_INFO } from '../lib/catalog.js';
 
 export default function ProductSetup({ product: p, onBack, onStart }) {
@@ -19,7 +19,7 @@ export default function ProductSetup({ product: p, onBack, onStart }) {
         <div>
           <div className="panel">
             <div className="row" style={{ alignItems: 'flex-start', gap: 14 }}>
-              <ShapeThumb product={p} size={110} />
+              <ProductThumb product={p} size={110} />
               <div className="grow">
                 <h3>Artwork specification</h3>
                 <p className="muted small" style={{ margin: 0 }}>Exactly what ShineOn asks for. The Studio builds your file to these numbers.</p>

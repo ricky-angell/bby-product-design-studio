@@ -1,6 +1,6 @@
 # BBY Product Design Studio — Development Progress
 
-Last updated: 2026-11-17 · catalog checked against ShineOn on 2026-11-17
+Last updated: 2026-11-18 · catalog checked against ShineOn on 2026-11-17
 
 ## Status definitions
 
@@ -475,9 +475,10 @@ Excluded (ShineOn lists as discontinued): Beach Towel : Discontinued.
 5. **Automated tests** (desktop/tablet/mobile, real Chrome) — see `docs/TEST_REPORT.md`. COMPLETED.
 6. **Deployment to GitHub Pages** — live at https://ricky-angell.github.io/bby-product-design-studio/ and verified in Chrome (see `docs/DEPLOYMENT_REPORT.md`). COMPLETED.
 7. **Skool publication** — BLOCKED / NOT PUBLISHED: no access to the signed-in Skool classroom (see `docs/SKOOL_PUBLICATION_REPORT.md`).
+8. **Product-specific previews (official ShineOn mockups)** — generic drawn product shapes removed everywhere (preview, catalog, setup). Official ShineOn PSD mockups are installed per product + catalog # + finish, verified against ShineOn's own render, and tested on 11 products (see `docs/PREVIEW_ACCURACY_REPORT.md`). COMPLETED for the software and testing. **Published official previews on the live site: BLOCKED** — needs ShineOn's written permission (ShineOn licenses mockups to each seller as non-transferable); until then each seller installs ShineOn's free PSDs in their own browser (`docs/MOCKUP_ASSETS.md`).
 
 ## Open items
 
 - 29 products need verification against the ShineOn product editor (listed above). Correct `public/data/products.json` (no rebuild needed) or re-run `npm run audit:catalog` when ShineOn updates its pages.
-- Official ShineOn mockup images are linked, not embedded (redistribution permission not established). Previews are illustrative and labelled as such.
+- Official mockup previews: 229 of 243 products have installable PSD mockups on ShineOn's portal; 11 have no mockup folder and 3 have a broken/private ShineOn link (see `docs/MOCKUP_SOURCES.md`). None are published on the live site until ShineOn grants permission; products without an installed mockup show "requires an approved asset".
 - Numeric safe areas/bleed are not published by ShineOn; the editor shows an advisory margin and links to the official template.

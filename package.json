@@ -2,7 +2,7 @@
   "name": "bby-product-design-studio",
   "private": true,
   "version": "1.0.0",
-  "description": "Built By You Academy \u00e2\u20ac\u201d Product Design Studio for ShineOn / SPP product artwork",
+  "description": "Built By You Academy â€” Product Design Studio for ShineOn / SPP product artwork",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,6 +31,7 @@
     "@fontsource/parisienne": "5.3.0",
     "@fontsource/playfair-display": "5.3.0",
     "@fontsource/poppins": "5.3.0",
+    "ag-psd": "34.1.0",
     "fabric": "7.4.0",
     "idb": "8.0.4",
     "imagetracerjs": "1.2.6",

@@ -6,10 +6,14 @@ let dbp = null;
 
 export function db() {
   if (!dbp) {
-    dbp = openDB(DB_NAME, 1, {
-      upgrade(d) {
-        d.createObjectStore('projects', { keyPath: 'id' });
-        d.createObjectStore('assets', { keyPath: 'id' });
+    dbp = openDB(DB_NAME, 2, {
+      upgrade(d, oldVersion) {
+        if (oldVersion < 1) {
+          d.createObjectStore('projects', { keyPath: 'id' });
+          d.createObjectStore('assets', { keyPath: 'id' });
+        }
+        // v2: official ShineOn mockup kits installed by this browser's user
+        if (oldVersion < 2) d.createObjectStore('mockups', { keyPath: 'id' });
       },
     });
   }

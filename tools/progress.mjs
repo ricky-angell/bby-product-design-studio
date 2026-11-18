@@ -8,6 +8,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const db = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/data/products.json'), 'utf8'));
 // Products whose exports are produced and byte-verified directly by tests/run-tests.mjs
 const DIRECT = new Set(['Endless Love Necklace', 'Alluring Beauty Necklace with Rotating Rose Box', 'Love Knot Necklace with Red Heart Rose Box', 'Open Work Watch with MC', 'Graphic Circle Keychain', 'Graphic Heart Keychain', 'Non-MC Engraved Heart Necklace', 'Engraved Metal Wallet', 'Custom Cut Acrylic Ornament Double Sided', 'Classic Tote Bag', 'Printed Canvas Poster (8" x 10")', 'High Gloss Poster (3:2)']);
+let survey = null; try { survey = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/mockup-sources.json'), 'utf8')).summary; } catch { /* optional */ }
+let previewProducts = 'the tested'; try { const r = fs.readFileSync(path.join(ROOT, 'docs/PREVIEW_ACCURACY_REPORT.md'), 'utf8'); const m = /verified in this test with official mockups installed through the app \| \*\*(\d+)\*\*/.exec(r); if (m) previewProducts = m[1]; } catch { /* optional */ }
 const status = (p) => (p.specStatus === 'VERIFIED' ? 'COMPLETED' : 'NEEDS VERIFICATION');
 
 const L = [];
@@ -40,10 +42,11 @@ L.push('', '## Development batches', '',
   '4. **AI Prompt Assistant, previews, projects (IndexedDB), backups, batch ZIP.** COMPLETED.',
   '5. **Automated tests** (desktop/tablet/mobile, real Chrome) — see `docs/TEST_REPORT.md`. COMPLETED.',
   '6. **Deployment to GitHub Pages** — live at https://ricky-angell.github.io/bby-product-design-studio/ and verified in Chrome (see `docs/DEPLOYMENT_REPORT.md`). COMPLETED.',
-  '7. **Skool publication** — BLOCKED / NOT PUBLISHED: no access to the signed-in Skool classroom (see `docs/SKOOL_PUBLICATION_REPORT.md`).', '',
+  '7. **Skool publication** — BLOCKED / NOT PUBLISHED: no access to the signed-in Skool classroom (see `docs/SKOOL_PUBLICATION_REPORT.md`).',
+  `8. **Product-specific previews (official ShineOn mockups)** — generic drawn product shapes removed everywhere (preview, catalog, setup). Official ShineOn PSD mockups are installed per product + catalog # + finish, verified against ShineOn's own render, and tested on ${previewProducts} products (see \`docs/PREVIEW_ACCURACY_REPORT.md\`). COMPLETED for the software and testing. **Published official previews on the live site: BLOCKED** — needs ShineOn's written permission (ShineOn licenses mockups to each seller as non-transferable); until then each seller installs ShineOn's free PSDs in their own browser (\`docs/MOCKUP_ASSETS.md\`).`, '',
   '## Open items', '',
   '- 29 products need verification against the ShineOn product editor (listed above). Correct `public/data/products.json` (no rebuild needed) or re-run `npm run audit:catalog` when ShineOn updates its pages.',
-  '- Official ShineOn mockup images are linked, not embedded (redistribution permission not established). Previews are illustrative and labelled as such.',
+  `- Official mockup previews: ${survey ? `${survey.withPsd} of ${survey.products} products have installable PSD mockups on ShineOn's portal; ${survey.noFolder} have no mockup folder and ${survey.brokenLink} have a broken/private ShineOn link (see \`docs/MOCKUP_SOURCES.md\`)` : 'run `node tools/mockup-survey.mjs`'}. None are published on the live site until ShineOn grants permission; products without an installed mockup show "requires an approved asset".`,
   '- Numeric safe areas/bleed are not published by ShineOn; the editor shows an advisory margin and links to the official template.');
 fs.writeFileSync(path.join(ROOT, 'BBY_PRODUCT_DESIGN_STUDIO_PROGRESS.md'), L.join('\n') + '\n');
 console.log('Progress tracker written');

@@ -16,7 +16,7 @@ export const STUDIO_TABS = [
   { id: 'build', label: '6–7 · Build & download' },
 ];
 
-export default function Studio({ product, project: initial, tab, setTab, onSaved, onToast, onBack }) {
+export default function Studio({ product, project: initial, tab, setTab, onSaved, onToast, onBack, onManageMockups }) {
   const projRef = useRef(initial);
   const [name, setName] = useState(initial.name);
   const [activeSurface, setActiveSurface] = useState(initial.activeSurface && product.surfaces.some((s) => s.id === initial.activeSurface) ? initial.activeSurface : product.surfaces[0].id);
@@ -92,7 +92,7 @@ export default function Studio({ product, project: initial, tab, setTab, onSaved
         setTab('design');
         try { await editorRef.current.addImageFile(f); onToast('Artwork added to your design.'); } catch (err) { onToast(err.message); }
       }} />
-      {tab === 'preview' && <PreviewPanel product={product} getSurfaceJSON={getSurfaceJSON} active={tab === 'preview'} />}
+      {tab === 'preview' && <PreviewPanel product={product} getSurfaceJSON={getSurfaceJSON} active={tab === 'preview'} onManageMockups={onManageMockups ? async (id) => { await persist(); onManageMockups(id); } : null} />}
       {tab === 'build' && <BuildPanel product={product} project={projRef.current} variant={variant} getSurfaceJSON={getSurfaceJSON} editorRef={editorRef} onGoDesign={() => setTab('design')} onToast={onToast} />}
 
       {specOpen && (

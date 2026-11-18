@@ -1,6 +1,6 @@
 # BBY Product Design Studio — Test Report
 
-Run: 2026-11-17T23:31:30.983Z  
+Run: 2026-11-18T02:00:27.825Z  
 Browser: C:/Program Files/Google/Chrome/Application/chrome.exe  
 Build: production (`vite build`) served by `vite preview`  
 Result: **144/144 checks passed**
@@ -188,7 +188,7 @@ Exports are produced by the real application code in the browser, returned as by
 
 | Result | Check | Detail |
 |---|---|---|
-| ✅ PASS | Oversize PNG detected as FAIL with optimise fix | 13.13 MB — limit under 5 MB |
+| ✅ PASS | Oversize PNG detected as FAIL with optimise fix | 13.12 MB — limit under 5 MB |
 | ✅ PASS | Optimised PNG keeps 2000×2000 and 300 DPI, valid CRCs |  |
 | ✅ PASS | Optimised PNG fits under 5 MB | 3.82 MB — limit under 5 MB (optimised PNG, 256 colours) |
 
@@ -196,7 +196,7 @@ Exports are produced by the real application code in the browser, returned as by
 
 | Result | Check | Detail |
 |---|---|---|
-| ✅ PASS | 14550×9750 JPEG at 300 DPI, under 100 MB | 14550×9750 300dpi 2.9MB in 2.4s |
+| ✅ PASS | 14550×9750 JPEG at 300 DPI, under 100 MB | 14550×9750 300dpi 2.9MB in 3.4s |
 
 ## Editor: undo / redo / layers
 
@@ -212,7 +212,7 @@ Exports are produced by the real application code in the browser, returned as by
 |---|---|---|
 | ✅ PASS | Project saved to IndexedDB with image referenced by assetId | 2 objects |
 | ✅ PASS | Delete removes the project | 16 → 15 |
-| ✅ PASS | Backup ZIP contains manifest, project JSON and the image asset | projects/, projects/6ef6e2da-0e00-4bfb-905f-92b1344e9c03.json, assets/, assets/325bc44e-750c-4d26-b210-8c59e435aac5.png, manifest.json, README.txt |
+| ✅ PASS | Backup ZIP contains manifest, project JSON and the image asset | projects/, projects/44ea24d3-cddb-42c4-bf58-ce1a69fb6abf.json, assets/, assets/ff828e09-ee98-4791-a293-25a5002962d4.png, manifest.json, README.txt |
 | ✅ PASS | Imported project restored with identical layers | image,textbox |
 | ✅ PASS | Imported project reopens in the editor (image + text) and builds |  |
 
@@ -269,6 +269,9 @@ Exports are produced by the real application code in the browser, returned as by
 - [mobile-1-catalog.png](screenshots/mobile-1-catalog.png)
 - [mobile-2-editor.png](screenshots/mobile-2-editor.png)
 - [mobile-3-build.png](screenshots/mobile-3-build.png)
+- [preview-0-catalog-placeholders.png](screenshots/preview-0-catalog-placeholders.png)
+- [preview-1-placeholder.png](screenshots/preview-1-placeholder.png)
+- [preview-2-mockup-library.png](screenshots/preview-2-mockup-library.png)
 - [tablet-1-catalog.png](screenshots/tablet-1-catalog.png)
 - [tablet-2-editor.png](screenshots/tablet-2-editor.png)
 - [tablet-3-build.png](screenshots/tablet-3-build.png)

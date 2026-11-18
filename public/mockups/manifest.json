@@ -1,0 +1,9 @@
+{
+  "schema": "bby-mockup-manifest/1",
+  "permission": {
+    "granted": false,
+    "reference": null,
+    "note": "ShineOn's Terms of Service license mockups, templates and images to each seller as non-exclusive and non-transferable. Official mockup kits are published here only after ShineOn grants written permission (see docs/MOCKUP_ASSETS.md). Until then each seller installs ShineOn's PSDs in their own browser."
+  },
+  "kits": []
+}

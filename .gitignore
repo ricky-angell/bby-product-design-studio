@@ -6,3 +6,7 @@ tests/output/
 # Never commit student artwork or project backups
 *.bby-backup.zip
 student-projects/
+
+# Official ShineOn mockup PSDs downloaded for local install/testing — ShineOn property, never commit
+mockup-sources/
+local-evidence/
