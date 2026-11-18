@@ -28,6 +28,21 @@ This is the same branch-based Pages setup as your existing BBY apps. A GitHub Ac
 | No page errors | ✅ | ✅ |
 | Hosts contacted | only `ricky-angell.github.io` | only `ricky-angell.github.io` |
 
+## Update 2026-11-18: product-specific previews (commit 1294006)
+
+The generic drawn previews were replaced with official-ShineOn-mockup previews (see `docs/PREVIEW_ACCURACY_REPORT.md` and `docs/MOCKUP_ASSETS.md`). The update was redeployed with `npm run deploy` and verified on the live site with `tests/live-check.mjs` in real Chrome.
+
+| Check | Desktop | Mobile |
+|---|---|---|
+| All 243 catalog cards show the "product image not installed" placeholder; drawn stand-in shapes | ✅ 243 / 0 | ✅ 243 / 0 |
+| `mockups/manifest.json`: published kits / ShineOn permission | 0 / not granted | 0 / not granted |
+| Preview tab without an installed mockup | "Exact product preview needs an approved ShineOn mockup" | same |
+| Build still PRODUCTION-READY; fonts; overflow; page errors | ✅ / ✅ / 0px / none | ✅ / ✅ / 0px / none |
+| Hosts contacted | only `ricky-angell.github.io` | same |
+| Installing an official PSD on the live site (Graphic Circle Bangle 3.psd, 8 MB) | ✅ 3.0 s, rendering + placement verified, **no upload requests** | — |
+
+No ShineOn imagery is deployed: ShineOn's Terms of Service license mockups to each seller as non-transferable. Publishing them for every student requires ShineOn's written permission (`node tools/publish-mockup-pack.mjs … --permission …`).
+
 ## Privacy and student data
 
 - The site is static. Student projects and artwork are stored only in each student's browser (IndexedDB) and are never uploaded.
